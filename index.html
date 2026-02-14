@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>HearMe</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="app-container">
+
+  <h1>HearMe</h1>
+  <p class="tagline">You don’t have to carry it alone.</p>
+
+  {% if exit and role == "talker" %}
+    <div class="message-box">
+      You chose to take care of yourself today.
+      Whenever you’re ready, we’ll be here 🤍
+    </div>
+  {% endif %}
+
+  {% if exit and role == "listener" %}
+    <div class="message-box">
+      Thank you for offering kindness.
+      Even being willing to listen matters 💛
+    </div>
+  {% endif %}
+
+  {% if logged_in %}
+    <button class="btn-primary" onclick="location.href='/role'">
+      Get Started
+    </button>
+
+    <button class="btn-soft" onclick="location.href='/logout'">
+      Logout
+    </button>
+  {% else %}
+    <button class="btn-primary" onclick="location.href='/login'">
+      Login to Get Started
+    </button>
+
+    <button class="btn-secondary" onclick="location.href='/signup'">
+      Sign Up
+    </button>
+  {% endif %}
+
+</div>
+
+</body>
+</html>

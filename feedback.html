@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Feedback</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="app-container">
+
+{% if not feeling %}
+  <h2>How are you feeling right now?</h2>
+  <p>Your answer helps us understand how this space supports you.</p>
+
+  <button class="btn-primary"
+    onclick="location.href='/feedback?role={{ role }}&feeling=better'">
+    😊 Better
+  </button>
+
+  <button class="btn-secondary"
+    onclick="location.href='/feedback?role={{ role }}&feeling=same'">
+    😐 Same
+  </button>
+
+  <button class="btn-danger"
+    onclick="location.href='/feedback?role={{ role }}&feeling=worse'">
+    😔 Worse
+  </button>
+
+{% else %}
+
+  <!-- TALKER FEEDBACK -->
+  {% if role == "talker" %}
+
+    {% if feeling == "better" %}
+      <div class="message-box">
+        We’re really glad you’re feeling a little lighter 🤍  
+        Sharing what’s inside you takes courage, and even small relief matters.
+        You didn’t keep it all bottled up — that itself is progress.
+      </div>
+
+    {% elif feeling == "same" %}
+      <div class="message-box">
+        Thank you for being honest with yourself 🤍  
+        Sometimes talking doesn’t instantly change how we feel — and that’s okay.
+        You still took an important step by expressing yourself.
+      </div>
+
+    {% elif feeling == "worse" %}
+      <div class="message-box">
+        We’re really sorry you’re feeling this way 🤍  
+        Please remember: feeling worse doesn’t mean you failed.
+        You’re not weak, and you don’t have to go through this alone.
+        Reaching out again is always okay.
+      </div>
+    {% endif %}
+
+  {% endif %}
+
+  <!-- LISTENER FEEDBACK -->
+  {% if role == "listener" %}
+
+    {% if feeling == "better" %}
+      <div class="message-box">
+        Thank you for being there for someone 💛  
+        Your presence, patience, and willingness to listen truly matter.
+        Even quiet support can make a real difference.
+      </div>
+
+    {% elif feeling == "same" %}
+      <div class="message-box">
+        Listening can be emotionally steady and quiet — and that’s valid 💛  
+        You showed up and offered space without judgment.
+        That kind of support is meaningful, even if it feels subtle.
+      </div>
+
+    {% elif feeling == "worse" %}
+      <div class="message-box">
+        We appreciate you sharing this honestly 💛  
+        Supporting others can sometimes feel heavy.
+        Please take care of yourself too — your well-being matters just as much.
+      </div>
+    {% endif %}
+
+  {% endif %}
+
+  <button class="btn-primary" onclick="location.href='/'">
+    Return Home
+  </button>
+
+{% endif %}
+
+</div>
+
+</body>
+</html>

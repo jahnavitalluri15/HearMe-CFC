@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Please Wait</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="app-container">
+
+{% if role == "talker" %}
+
+  <h2>You chose to talk 🤍</h2>
+
+  <div class="message-box">
+    Opening up takes courage.
+    You don’t need to rush or have perfect words.
+    Take a moment to breathe.
+  </div>
+
+  <div class="message-box">
+    🌱 We are actively finding a listener for you.
+    We will connect you very soon.
+  </div>
+
+  <button class="btn-secondary">
+    Waiting for a listener…
+  </button>
+
+  <button class="btn-soft"
+          onclick="location.href='/chat?role=talker&private=true'">
+    Express Privately
+  </button>
+
+  <button class="btn-danger"
+          onclick="location.href='/?exit=true&role=talker'">
+    Exit
+  </button>
+
+{% endif %}
+
+{% if role == "listener" %}
+
+  <h2>You chose to listen 💛</h2>
+
+  <div class="message-box">
+    Thank you for offering your presence.
+    Listening itself can bring comfort.
+  </div>
+
+  <div class="message-box">
+    🤍 We are connecting you with someone who needs support.
+    Please stay — it won’t be long.
+  </div>
+
+  <button class="btn-secondary">
+    Waiting to be connected…
+  </button>
+
+  <button class="btn-danger"
+          onclick="location.href='/?exit=true&role=listener'">
+    Exit
+  </button>
+
+{% endif %}
+
+</div>
+
+</body>
+</html>

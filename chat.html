@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Chat</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="app-container">
+
+{% if private %}
+  <h2>Private Space 🤍</h2>
+  <div class="message-box">
+    This space is just for you.
+    Write freely and honestly.
+  </div>
+{% else %}
+  <h2>Anonymous Chat</h2>
+{% endif %}
+
+<div id="messages" class="message-box"></div>
+
+<input id="messageInput" placeholder="Type your message..." />
+
+<button class="btn-primary" onclick="sendMessage()">
+  Send
+</button>
+
+<br><br>
+
+<button class="btn-danger"
+        onclick="location.href='/feedback?role={{ role }}'">
+  Exit Chat
+</button>
+
+</div>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

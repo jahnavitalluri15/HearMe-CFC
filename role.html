@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Select Role</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="app-container">
+
+  <h2>How would you like to join?</h2>
+  <p>Your identity stays anonymous.</p>
+
+  <button class="btn-primary"
+          onclick="location.href='/wait?role=talker'">
+    🗣 I want to Talk
+  </button>
+
+  <button class="btn-soft"
+          onclick="location.href='/wait?role=listener'">
+    👂 I want to Listen
+  </button>
+
+</div>
+
+</body>
+</html>
